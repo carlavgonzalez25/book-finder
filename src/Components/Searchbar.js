@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { searchBooks } from "../Redux/actions/books";
 import { useDispatch } from "react-redux";
 
@@ -11,14 +11,9 @@ const Searchbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(searchBooks(query)).then((data) => {
-      console.log(data);
       setBooks(data);
     });
   };
-
-  useEffect(() => {
-    console.log(books);
-  }, [books]);
 
   return (
     <>
@@ -30,10 +25,6 @@ const Searchbar = () => {
         ></input>
         <button type="submit"> search</button>
       </form>
-      {!!books.length &&
-        books.map((e, i) => (
-          <p key={e.volumeInfo.title + i}>{e.volumeInfo.title}</p>
-        ))}
     </>
   );
 };
