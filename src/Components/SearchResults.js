@@ -6,8 +6,9 @@ const SearchResults = () => {
   const books = useSelector(({ books }) => books.books, shallowEqual);
 
   return (
-    <div className="flex flex-wrap">
-      {!!books.length && books.map((book) => <BookCard book={book} />)}
+    <div className="flex flex-wrap  justify-between ">
+      {!!books.length &&
+        books.map((book, i) => <BookCard key={i} book={book} />)}
     </div>
   );
 };
