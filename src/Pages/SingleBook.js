@@ -12,16 +12,19 @@ const SingleBook = () => {
     dispatch(searchBook(id)).then((data) => setBook(data));
   }, [dispatch, id]);
 
-  const src = book?.volumeInfo?.imageLinks?.medium;
+  const imageLength = !!book && book?.volumeInfo?.imageLinks;
+  const src =
+    (!!book && book?.volumeInfo?.imageLinks.medium) ||
+    book?.volumeInfo?.imageLinks.thumbnail;
 
   return (
     !!book && (
       <div className="h-9/10 p-3 md:p-8 mx-5 md:mx-11 flex ">
-        <div className="flex w-full">
-          <div className="w-1/5">
+        <div className="flex w-full flex-col md:flex-row">
+          <div className="md:w-1/5 w-full">
             <img src={src} alt={`${book?.volumeInfo?.title} book cover`}></img>
           </div>
-          <div className="w-4/5">{book?.volumeInfo?.title}</div>
+          <div className="md:w-4/5 w-full mx-8">{book?.volumeInfo?.title}</div>
         </div>
       </div>
     )

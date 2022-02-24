@@ -1,5 +1,11 @@
 import axios from "axios";
-import { SEARCH_BOOKS, SET_ERROR, SET_LOADING, SEARCH_BOOK } from "../types";
+import {
+  SEARCH_BOOKS,
+  SET_ERROR,
+  SET_LOADING,
+  SEARCH_BOOK,
+  CLEAR_BOOKS,
+} from "../types";
 
 let apiKey;
 
@@ -41,3 +47,5 @@ export const searchBook = (payload) => (dispatch) => {
 };
 
 export const setLoading = () => (dispatch) => dispatch({ type: SET_LOADING });
+
+export const clearBooks = () => (dispatch) => dispatch({ type: CLEAR_BOOKS });
